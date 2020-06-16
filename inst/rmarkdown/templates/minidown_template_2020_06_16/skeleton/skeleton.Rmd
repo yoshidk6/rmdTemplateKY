@@ -1,0 +1,74 @@
+---
+title: "Title"
+author: "Kenta Yoshida"
+date: "`r Sys.Date()`"
+output:  
+  minidown::mini_document:
+    framework: water
+    theme: light
+    code_folding:
+      source: hide
+      output: show
+      message: hide
+      warning: hide
+    results_folding: show
+    toc: true
+    toc_float: true
+    code_download: true
+    keep_md: true
+---
+
+
+```{r setup, warning=FALSE, message=FALSE}
+# remotes::install_github("atusy/minidown") # Need GitHub version for results_folding and code_download
+
+knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=4,
+                      results.folding=NULL)
+
+library(tidyverse)
+
+theme_set(theme_linedraw(base_size = 12))
+
+geomean <- function(x){exp(mean(log(x)))}
+quibble <- function(x, q = c(0.05, 0.5, 0.95)) {
+  tibble("{{ x }}" := quantile(x, q), "{{ x }}_q" := q)
+}
+# summarize(data, quibble(x))
+```
+
+<!-- download_rmd_button() -->
+
+# Notes
+
+
+# Import data
+
+```{r}
+
+```
+
+
+# Section
+
+```{r}
+warning("warning")
+message("message")
+print("output")
+
+pressure %>% 
+  mutate(group = ifelse(temperature < 150, "group a", "group b")) %>% 
+  qplot(temperature, pressure, data = ., color = group) +
+  facet_wrap(~group) +
+  labs(title = "Example figure of how it looks like",
+       subtitle = "with theme settings")
+
+```
+
+
+# Session info
+
+```{r, results.folding="hide"}
+devtools::session_info()
+```
+
+
