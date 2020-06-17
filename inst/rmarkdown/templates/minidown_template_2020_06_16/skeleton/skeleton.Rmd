@@ -26,6 +26,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=4,
                       results.folding=NULL)
 
 library(tidyverse)
+library(glue)
 
 theme_set(theme_linedraw(base_size = 12))
 
