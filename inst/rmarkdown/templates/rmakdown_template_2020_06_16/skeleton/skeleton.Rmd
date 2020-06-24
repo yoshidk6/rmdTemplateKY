@@ -25,7 +25,9 @@ theme_set(theme_linedraw(base_size = 12))
 
 geomean <- function(x){exp(mean(log(x)))}
 quibble <- function(x, q = c(0.05, 0.5, 0.95)) {
-  tibble("{{ x }}" := quantile(x, q), "{{ x }}_q" := q)
+  tibble("{{ x }}" := quantile(x, q), 
+         "{{ x }}_q" := paste0("P",
+                               formatC(q * 100, width = 2, format = "d", flag = "0")))
 }
 # summarize(data, quibble(x))
 ```
