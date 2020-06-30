@@ -17,6 +17,7 @@ output:
 
 ```{r setup, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=4)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 library(tidyverse)
 library(glue)
