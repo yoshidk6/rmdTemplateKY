@@ -11,7 +11,6 @@ output:
       output: show
       message: hide
       warning: hide
-    results_folding: show
     toc: true
     toc_float: true
     code_download: true
@@ -21,9 +20,9 @@ output:
 # Setup
 
 ```{r setup, warning=FALSE, message=FALSE}
-# remotes::install_github("atusy/minidown") # Need GitHub version for results_folding and code_download
+# remotes::install_github("atusy/minidown") # Need GitHub version for code_download
 
-knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=4, results.folding=NULL)
+knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=4)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 library(tidyverse)
@@ -86,7 +85,7 @@ pressure %>%
 
 # Session info
 
-```{r, results.folding="hide"}
+```{r, class.output="hide"}
 devtools::session_info()
 ```
 
