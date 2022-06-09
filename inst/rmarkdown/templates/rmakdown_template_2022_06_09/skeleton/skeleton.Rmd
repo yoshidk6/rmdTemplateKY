@@ -6,7 +6,7 @@ output:
   html_document:
     theme: cosmo
     code_folding: hide
-    keep_md: yes
+    keep_md: no
     toc: yes
     toc_float:
       collapsed: no
@@ -16,7 +16,7 @@ output:
 
 
 ```{r setup, warning=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = TRUE, fig.width=6, fig.height=4)
+knitr::opts_chunk$set(fig.width=6, fig.height=4)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 library(tidyverse)
@@ -31,6 +31,13 @@ quibble <- function(x, q = c(0.05, 0.5, 0.95)) {
                                formatC(q * 100, width = 2, format = "d", flag = "0")))
 }
 # summarize(data, quibble(x))
+```
+
+```{r comment="", results='asis'}
+# Handle colored text outputs
+options(crayon.enabled = TRUE)
+old_hooks <- fansi::set_knit_hooks(knitr::knit_hooks,
+                                   which = c("output", "message", "error"))
 ```
 
 
